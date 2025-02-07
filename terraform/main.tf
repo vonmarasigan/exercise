@@ -3,18 +3,18 @@ provider "aws" {
 }
 
 resource "aws_instance" "flask_app" {
-  ami           = "ami-0c55b159cbfafe1f0"
+  ami           = "ami-0c614dee691cbbf37" # Amazon Linux 2023 AMI (update if needed)
   instance_type = "t2.micro"
-  key_name      = "von-kerpair"
+  key_name      = "devopskeypair"
 
   tags = {
     Name = "flask-app-instance"
   }
 
-  provisioner "file" {
-    source      = "../ansible"
-    destination = "/home/ec2-user/ansible"
-  }
+  #   provisioner "file" {
+  #     source      = "../ansible"
+  #     destination = "/home/ec2-user/ansible"
+  #   }
 }
 
 output "ec2_public_ip" {
